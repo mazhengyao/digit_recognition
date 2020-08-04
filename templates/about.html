@@ -1,0 +1,202 @@
+<!--
+    @Description: 手写数字识别系统关于我们界面
+    @author Damon Ma
+    @email : ma_zhengyao@163.com
+    @date 2020/4/1
+    @file : about.html
+    @software: PyCharm
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手写数字识别系统</title>
+    <!--导入css相关文件-->
+    <!--bootstrap-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--style整体样式-->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+    <!--layout布局样式-->
+    <link rel="stylesheet"
+          href="../static/css/layout.css">
+    <!--button按钮样式-->
+    <link rel="stylesheet"
+          href="../static/css/button.css">
+    <!--nav导航样式-->
+    <link rel="stylesheet"
+          href="../static/css/nav.css">
+    <!--menu菜单样式-->
+    <link rel="stylesheet"
+          href="../static/css/menu.css">
+    <!--card资料卡片样式-->
+    <link rel="stylesheet"
+          href="../static/css/card.css">
+    <!--js-->
+    <!--jquery-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/jquery.min.js') }}">
+    </script>
+    <!--main 识别事件控制-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/main.js') }}">
+    </script>
+    <!--echarts 可视化组件-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/echarts.js') }}">
+    </script>
+    <!--theme 组件样式-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/dark.js') }}">
+    </script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/shine.js') }}">
+    </script>
+</head>
+
+<body>
+
+<!--标题模块-->
+<div id="div_title" class="col-md-12">
+          <span id="span_container">
+                <h1 id="h1_name" data-text="Digit Recognition System :)">手写数字识别系统  :)</h1>
+                    <!--字体阴影样式-->
+                    <script>
+                      // 获取元素
+                      var text = document.getElementById('h1_name');
+                      var shadow = '';
+                      // 循环给阴影赋值
+                      for(var i = 0; i< 60 ; i++) {
+                          shadow += (shadow ? ',': '') + i*1 +'px ' + i*1 +'px 0 #01ded3'
+                      }
+                      // 添加阴影
+                      text.style.textShadow = shadow;
+                    </script>
+          </span>
+</div>
+
+<!--标题栏-->
+<div id="div_black" class="col-md-12">
+    <!--标题栏背景-->
+    <canvas id="canvas_bg">
+    </canvas>
+    <!--标题栏字体-->
+    <div id="div_shadow">
+        <p id="p_menu">手写数字识别系统  :)</p>
+    </div>
+</div>
+
+<!--菜单栏-->
+<div id="div_nav" class="col-md-12">
+    <nav class="nav">
+        <a href="http://127.0.0.1:8000/welcome" class="nav-item" active-color="#005eaa">欢迎</a>
+        <a href="http://127.0.0.1:8000/main" class="nav-item" active-color="#2b821d">画板</a>
+        <a href="http://127.0.0.1:8000/about" class="nav-item is-active" active-color="#c12e34">关于</a>
+        <span class="nav-indicator"></span>
+    </nav>
+</div>
+
+<!--资料卡片-->
+<div class="row">
+    <!--资料卡片1-->
+    <div id='card1' class="card">
+        <!--背景图-->
+        <div class="image">
+            <img src="../static/img/img1.jpg" width="340" height="400">
+            <!--<img src="../static/img/pexels.jpeg">-->
+        </div>
+        <!--内容-->
+        <div class="content">
+            <div class="title">概述</div>
+            <div class="sub-title">系统相关概述</div>
+            <div class="bottom">
+                <p>
+                    手写数字字符识别，
+                    是模式识别中的经典问题，
+                    具体来说是指将带有手写阿拉伯数字（0~9）
+                    的图片输入到计算机中，
+                    通过一定方法自动辨识数字是0~9中的哪一个数字，
+                    它是模式识别方向的入门级应用。
+                </p>
+                <button>了解更多</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--资料卡片2-->
+    <div id='card2' class="card">
+        <!--背景图-->
+        <div class="image">
+            <img src="../static/img/img2.jpg" width="340" height="400">
+            <!--<img src="../static/img/pexels.jpeg">-->
+        </div>
+        <!--内容-->
+        <div class="content">
+            <div class="title">技术栈</div>
+            <div class="sub-title">系统相关技术</div>
+            <div class="bottom">
+                <p>TensorFlow：搭建与训练网络结构</p>
+                <p>Flask：实现接口数据传递</p>
+                <p>EChart：识别率可视化</p>
+                <p>Electron：封装前端界面</p>
+                <button>了解更多</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--资料卡片3-->
+    <div id='card3' class="card">
+        <!--背景图-->
+        <div class="image">
+            <img src="../static/img/img3.jpg" width="340" height="400">
+            <!--<img src="../static/img/pexels.jpeg">-->
+        </div>
+        <!--内容-->
+        <div class="content">
+            <div class="title">开发者</div>
+            <div class="sub-title">开发者信息</div>
+            <div class="bottom">
+                <p>学校：山东建筑大学</p>
+                <p>导师：孙晓燕</p>
+                <p>班级：软测161</p>
+                <p>学号：201611105032</p>
+                <p>姓名：马正耀</p>
+                <button>了解更多</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+<!--chart可视化组件实现-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/chart.js') }}">
+</script>
+<!--shadow字体阴影-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/shadow.js') }}">
+</script>
+<!--star动态连线背景-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/star.js') }}">
+</script>
+<!--button响应式按钮-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/button.js') }}">
+</script>
+<!--nav导航栏-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/nav.js') }}">
+</script>
+<!--card资料卡片样式-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/card.js') }}">
+</script>
+
+</html>

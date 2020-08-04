@@ -1,0 +1,226 @@
+<!--
+    @Description: 手写数字识别系统的识别界面
+    @author Damon Ma
+    @email : ma_zhengyao@163.com
+    @date 2020/4/2
+    @file : canvas.html
+    @software: PyCharm
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手写数字识别系统</title>
+    <!--导入css相关文件-->
+    <!--bootstrap-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--style整体样式-->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+    <!--layout布局样式-->
+    <link rel="stylesheet"
+          href="../static/css/layout.css">
+    <!--button按钮样式-->
+    <link rel="stylesheet"
+          href="../static/css/button.css">
+    <!--nav导航样式-->
+    <link rel="stylesheet"
+          href="../static/css/nav.css">
+    <!--menu菜单样式-->
+    <link rel="stylesheet"
+          href="../static/css/menu.css">
+
+    <!--js-->
+    <!--jquery-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/jquery.min.js') }}">
+    </script>
+    <!--main 识别事件控制-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/main.js') }}">
+    </script>
+    <!--echarts 可视化组件-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/echarts.js') }}">
+    </script>
+    <!--theme 组件样式-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/dark.js') }}">
+    </script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/shine.js') }}">
+    </script>
+</head>
+
+<body>
+
+<!--全屏背景-->
+<div class="fullscreen-video-wrap">
+</div>
+
+<!--标题模块-->
+<div id="div_title" class="col-md-12">
+          <span id="span_container">
+                <h1 id="h1_name" data-text="Digit Recognition System :)">手写数字识别系统  :)</h1>
+                    <!--字体阴影样式-->
+                    <script>
+                      // 获取元素
+                      var text = document.getElementById('h1_name');
+                      var shadow = '';
+                      // 循环给阴影赋值
+                      for(var i = 0; i< 60 ; i++) {
+                          shadow += (shadow ? ',': '') + i*1 +'px ' + i*1 +'px 0 #01ded3'
+                      }
+                      // 添加阴影
+                      text.style.textShadow = shadow;
+                    </script>
+          </span>
+</div>
+
+<!--标题栏-->
+<div id="div_black" class="col-md-12">
+    <!--标题栏背景-->
+    <canvas id="canvas_bg">
+    </canvas>
+    <!--标题栏字体-->
+    <div id="div_shadow">
+        <p id="p_menu">手写数字识别系统  :)</p>
+    </div>
+
+    <ul>
+        <li><a href="#">欢迎</a></li>
+        <li><a href="#">画板</a></li>
+        <li><a href="#">关于</a></li>
+        <!--<li><a href="#">敬请</a></li>-->
+        <!--<li><a href="#">期待</a></li>-->
+    </ul>
+
+</div>
+
+<!--菜单栏-->
+<div id="div_nav" class="col-md-12">
+    <nav class="nav">
+        <a href="http://127.0.0.1:8000/welcome" class="nav-item" active-color="#005eaa">欢迎</a>
+        <a href="http://127.0.0.1:8000/main" class="nav-item is-active" active-color="#2b821d">画板</a>
+        <a href="http://127.0.0.1:8000/about" class="nav-item" active-color="#c12e34">关于</a>
+        <!--<a href="#" class="nav-item" active-color="red"></a> -->
+        <!--<a href="#" class="nav-item" active-color="rebeccapurple"></a>-->
+        <span class="nav-indicator"></span>
+    </nav>
+</div>
+
+<!--主界面-->
+<div class="row">
+
+    <!--左侧canvas手写区-->
+    <div class="col-md-6">
+        <div id="div_inner1">
+            <p class="p_class">请手写一个数字:</p>
+            <!--主窗口-->
+            <canvas id="main">
+
+            </canvas>
+            <p>
+                <!--识别按钮-->
+                <button id="recognition" class="dynamic">
+                    <p>识别</p>
+                    <div class="loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <!--使用svg绘制-->
+                    <svg class="checkmark" width="30px" height="30px" stroke="white" fill="none">
+                        <polyline id="polyline_checkmark" points="2,10 12,18 28,2">
+                        </polyline>
+                    </svg>
+                </button>
+                <!--重写按钮-->
+                <button id="clear" class="dynamic">
+                    <p>重写</p>
+                    <div class="loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <!--使用svg绘制-->
+                    <svg class="checkmark" width="30px" height="30px" stroke="white" fill="none">
+                        <polyline id="polyline_checkmark" points="2,10 12,18 28,2">
+                        </polyline>
+                    </svg>
+                </button>
+               <button id="demo" class="dynamic">
+                    <p>动态</p>
+                    <div class="loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <!--使用svg绘制-->
+                    <svg class="checkmark" width="30px" height="30px" stroke="white" fill="none">
+                        <polyline id="polyline_checkmark" points="2,10 12,18 28,2">
+                        </polyline>
+                    </svg>
+                </button>
+            </p>
+
+        </div>
+    </div>
+
+    <!--右侧识别结果-->
+    <div class="col-md-6">
+        <div id="div_inner2" class="row">
+            <!--缩放后的输入图片-->
+            <div class="col-md-6">
+                <p class="p_class">输入图片:</p>
+                <canvas id="input" width="140" height="140"></canvas>
+            </div>
+
+            <!--识别结果-->
+            <div id="div_result" class="col-md-6">
+                <p class="p_class">识别结果:</p>
+                <div id="result" style="width: 140px; height: 140px;">
+                    <p id="p_class_reg"></p>
+                </div>
+            </div>
+        </div>
+
+        <!--分隔线-->
+        <hr id="hr_division">
+
+        <!--识别率展示-->
+        <p class="p_class">识别率:</p>
+
+        <!--echarts组件-->
+        <div id="chart" class="row">
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+<!--chart可视化组件实现-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/chart.js') }}">
+</script>
+<!--shadow字体阴影-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/shadow.js') }}">
+</script>
+<!--star动态连线背景-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/star.js') }}">
+</script>
+<!--button响应式按钮-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/button.js') }}">
+</script>
+<!--nav导航栏-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/nav.js') }}">
+</script>
+
+</html>

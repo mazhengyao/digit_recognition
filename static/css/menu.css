@@ -1,0 +1,168 @@
+/**
+ * @Description: 菜单栏
+ * @author Damon Ma
+ * @email : ma_zhengyao@163.com
+ * @date 2020/4/11
+ * @file : menu.css
+ * @software: PyCharm
+*/
+
+
+/*无序列表*/
+#div_black ul {
+    z-index: 3;
+    position: relative;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%,-50%);*/
+    /*display: flex;*/
+    display: none;
+    margin: 60px 0 0 0;
+    padding: 0;
+    height: 50px;
+    color: #333;
+    width: 400px;
+    float: right;
+}
+
+
+/*无序列表元素*/
+#div_black ul li {
+    list-style: none;
+    color: #333;
+}
+
+
+/*无序列表元素 超链接文字*/
+#div_black ul li a{
+    font-family: "montserrat",sans-serif;
+    font-weight: 900;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0 25px;
+    color: whitesmoke;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+    padding: 5px 10px;
+}
+
+
+/*无序列表元素 超链接文字:鼠标经过*/
+#div_black ul li a:hover{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0 25px;
+    color: #001F3A;
+    background: whitesmoke;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+    padding: 5px 10px;
+}
+
+
+/*无序列表元素 超链接文字*/
+#div_black ul li a:before{
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border: 3px solid whitesmoke;
+    border-width: 0 0 3px 3px;
+    transition: .5s;
+    opacity: 0;
+}
+
+
+/*无序列表元素 超链接文字*/
+#div_black ul li a:hover:before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 10px;
+    height: 10px;
+    border: 3px solid whitesmoke;
+    border-width: 0 0 3px 3px;
+    transition: .5s;
+    opacity: 1;
+}
+
+
+/*无序列表元素 超链接文字*/
+#div_black ul li a:after{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    border: 3px solid whitesmoke;
+    border-width: 3px 3px 0 0;
+    transition: .5s;
+    opacity: 0;
+}
+
+
+/*无序列表元素 超链接文字*/
+#div_black ul li a:hover:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 10px;
+    height: 10px;
+    border: 3px solid whitesmoke;
+    border-width: 3px 3px 0 0;
+    transition: .5s;
+    opacity: 1;
+}
+
+
+/*文字*/
+#p_menu{
+    font-family: "montserrat",sans-serif;
+    width: 400px;
+    display: block;
+    margin: 0;
+    padding: 7px 0 0 50px;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 900;
+    /*position: relative;*/
+    /*color: #34495e;*/
+    color: whitesmoke;
+    z-index: 3;
+
+}
+
+
+/*阴影*/
+#div_shadow{
+    position : absolute;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    height: 130px;
+    width: 400px;
+
+}
+
+
+/*标题栏背景*/
+#canvas_bg{
+    z-index: 0;
+    position : absolute;
+    margin: 0;
+    padding: 0;
+    height: 120px;
+    width: 100%;
+}

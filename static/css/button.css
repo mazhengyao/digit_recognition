@@ -1,0 +1,175 @@
+/**
+ * @Description: 响应式按钮样式
+ * @author Damon Ma
+ * @email : ma_zhengyao@163.com
+ * @date 2020/4/5
+ * @file : button.css
+ * @software: PyCharm
+*/
+
+
+/*识别按钮*/
+#recognition{
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-decoration: none;
+    border: none;
+    background-color: #005eaa;
+    margin: 10px 10px 10px 10px;
+}
+
+/*识别按钮鼠标划过*/
+#recognition:hover{
+    background-color: #001F3A;
+}
+
+/*重写按钮*/
+#clear{
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-decoration: none;
+    border: none;
+    margin: 10px 10px 10px 10px;
+    background-color: #2b821d;
+}
+
+
+/*重写按钮鼠标滑过*/
+#clear:hover{
+    background-color: #1b5011;
+}
+
+
+/*按钮的三个状态*/
+/*初始->载入->完成*/
+/*button style start*/
+
+/*初始:静止状态*/
+.dynamic{
+    position: relative;
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+    line-height: 5rem;
+    border: none;
+    outline: none;
+    width: 8rem;
+    height: 5rem;
+    border-radius: 5rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 28px black;
+    cursor: pointer;
+    transition: .2s;
+}
+
+
+
+.active.dynamic{
+    width: 8rem;
+    color: transparent;
+}
+
+/*button style end*/
+
+
+/*loading style start*/
+
+
+/*载入状态*/
+.loading{
+    opacity: 0;
+    transition: .1s;
+
+}
+
+
+.active .loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 70%;
+    height: 40%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    opacity: 1;
+}
+
+
+.active .loading div{
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    background-color: #fff;
+
+    animation: .9s loading ease-in-out infinite alternate;
+
+}
+
+
+@keyframes loading{
+    to{
+        transform: translate(0,-1rem);
+    }
+}
+
+
+.active .loading div:nth-child(2){
+    animation-delay: .2s;
+}
+
+
+.active .loading div:nth-child(3){
+    animation-delay: .4s;
+}
+
+
+.verity .loading{
+    opacity: 0;
+}
+
+
+/*loading style end*/
+
+
+/*checkmark style start*/
+
+
+.checkmark{
+    position: absolute;
+    left: 50%;
+    top: 56%;
+    transform: translate(-50%,-50%);
+
+    /*利用stroke的虚线和偏移值达到加载的动画效果*/
+    stroke-dasharray: 36px;
+    stroke-dashoffset: 36px;
+}
+
+
+.verity .checkmark{
+    animation: .3s show forwards;
+    animation-delay: .4s;
+}
+
+
+@keyframes show{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+/*checkmark style end*/

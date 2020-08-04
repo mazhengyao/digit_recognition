@@ -1,0 +1,184 @@
+<!--
+    @Description: electron main
+    @author Damon Ma
+    @email : ma_zhengyao@163.com
+    @date 2020/4/3
+    @file : main.html
+    @software: PyCharm
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手写数字识别系统</title>
+    <!--导入css相关文件-->
+    <!--bootstrap-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--style整体样式-->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+    <!--layout布局样式-->
+    <link rel="stylesheet"
+          href="../static/css/layout.css">
+    <!--button按钮样式-->
+    <link rel="stylesheet"
+          href="../static/css/button.css">
+    <!--nav导航样式-->
+    <link rel="stylesheet"
+          href="../static/css/nav.css">
+    <!--menu菜单样式-->
+    <link rel="stylesheet"
+          href="../static/css/menu.css">
+
+    <!--js-->
+    <!--jquery-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/jquery.min.js') }}">
+    </script>
+    <!--main 识别事件控制-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/main.js') }}">
+    </script>
+    <!--echarts 可视化组件-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/echarts.js') }}">
+    </script>
+    <!--theme 组件样式-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/dark.js') }}">
+    </script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/shine.js') }}">
+    </script>
+</head>
+
+<body>
+<!--标题模块-->
+<div id="div_title" class="col-md-12">
+          <span id="span_container">
+                <h1 id="h1_name" data-text="Digit Recognition System :)">手写数字识别系统  :)</h1>
+                    <!--字体阴影样式-->
+                    <script>
+                      // 获取元素
+                      var text = document.getElementById('h1_name');
+                      var shadow = '';
+                      // 循环给阴影赋值
+                      for(var i = 0; i< 60 ; i++) {
+                          shadow += (shadow ? ',': '') + i*1 +'px ' + i*1 +'px 0 #01ded3'
+                      }
+                      // 添加阴影
+                      text.style.textShadow = shadow;
+                    </script>
+          </span>
+</div>
+
+<!--标题栏-->
+<div id="div_black" class="col-md-12">
+    <!--标题栏背景-->
+    <canvas id="canvas_bg">
+    </canvas>
+    <!--标题栏字体-->
+    <div id="div_shadow">
+        <p id="p_menu">手写数字识别系统  :)</p>
+    </div>
+
+    <ul>
+        <li><a href="#">欢迎</a></li>
+        <li><a href="#">画板</a></li>
+        <li><a href="#">关于</a></li>
+        <!--<li><a href="#">敬请</a></li>-->
+        <!--<li><a href="#">期待</a></li>-->
+    </ul>
+
+</div>
+
+<!--菜单栏-->
+<div id="div_nav" class="col-md-12">
+    <nav class="nav">
+        <a href="http://127.0.0.1:8000/welcome" class="nav-item" active-color="#005eaa">欢迎</a>
+        <a href="http://127.0.0.1:8000/main" class="nav-item is-active" active-color="#2b821d">画板</a>
+        <a href="http://127.0.0.1:8000/about" class="nav-item" active-color="#c12e34">关于</a>
+        <!--<a href="#" class="nav-item" active-color="red"></a> -->
+        <!--<a href="#" class="nav-item" active-color="rebeccapurple"></a>-->
+        <span class="nav-indicator"></span>
+    </nav>
+</div>
+
+<header class="v-header container">
+    <div class="fullscreen-video-wrap">
+        <video muted src="../static/video/bg_video.mp4" autoplay="true" loop="true"></video>
+    </div>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+        <h1>手写数字识别系统</h1>
+        <p>
+            Tensorflow是谷歌公司的深度学习框架，
+            是一个采用数据流图，
+            用于数值计算的开源软件库，
+            广泛应用于各类机器学习（machine learning）
+            和深度神经网络算法的编程实现。
+            利用tensorflow框架，
+            可以方便地建立各种神经网络，
+            设置好参数自动训练，
+            然后输入测试数据进行结果的测试。
+            手写数字字符识别，
+            是模式识别中的经典问题，
+            具体来说是指将带有手写阿拉伯数字
+            （0~9）的图片输入到计算机中，
+            通过一定方法自动辨识数字是0~9中的哪一个数字，
+            它是模式识别方向的入门级应用。
+        </p>
+        <a href="http://127.0.0.1:8000/" class="btn">开始</a>
+    </div>
+</header>
+<section class="section section-a">
+    <div class="container">
+        <h2>关于我们</h2>
+        <p>
+            When the routine bites hard and ambitions are low.
+            And the resentment rides high but emotions won't grow.
+            And we're changing our ways taking different roads.
+            Then love, love will tear us apart again.
+            Love, love will tear us apart again.
+        </p>
+    </div>
+</section>
+<section class="section section-b">
+    <div class="container">
+        <h2>联系我们</h2>
+        <p>
+            Why is the bedroom so cold,Turned away on your side?
+            Is my timing that flawed our respect run so dry?
+            Yet there's still this appeal.
+            That we've kept through our lives.
+            Love, love will tear us apart again.
+            Love, love will tear us apart again.
+        </p>
+    </div>
+</section>
+</body>
+
+<!--chart可视化组件实现-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/chart.js') }}">
+</script>
+<!--shadow字体阴影-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/shadow.js') }}">
+</script>
+<!--star动态连线背景-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/star.js') }}">
+</script>
+<!--button响应式按钮-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/button.js') }}">
+</script>
+<!--nav导航栏-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/nav.js') }}">
+</script>
+
+</html>

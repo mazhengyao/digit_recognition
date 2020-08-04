@@ -1,0 +1,136 @@
+/**
+ * @Description: 资料卡片样式
+ * @author Damon Ma
+ * @email : ma_zhengyao@163.com
+ * @date 2020/4/6
+ * @file : card.css
+ * @software: PyCharm
+*/
+
+
+/*卡片*/
+.card{
+    margin-left: 100px;
+    position: relative;
+    height: 470px;
+    width: 340px;
+    display: block;
+    background: white;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+    transition: 0.4s linear;
+}
+
+
+/*卡片:鼠标滑过*/
+.card:hover{
+    box-shadow: 0 1px 35px 0 rgba(0,0,0,0.3);
+}
+
+
+/*卡片:图片*/
+.card .image{
+    background: black;
+    height: 400px;
+    overflow: hidden;
+}
+
+
+.image img{
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+
+}
+
+
+/*图像*/
+.card.active .image img{
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+
+/*内容*/
+.card .content{
+    position: absolute;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    text-align: center;
+    padding: 20px 30px;
+
+}
+
+
+/*标题*/
+.content .title{
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+
+}
+
+
+/*副标题*/
+.content .sub-title{
+    font-size: 18px;
+    font-weight: 500;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+
+/*文字*/
+.bottom p{
+    color: #666666;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 1.8em;
+}
+
+
+/*按钮*/
+.bottom button{
+    float: left;
+    padding: 7px 15px;
+    font-size: 17px;
+    background: #e74c3c;
+    color: white;
+    font-weight: 500;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+
+/*按钮:鼠标滑过*/
+.bottom button:hover{
+    transform: scale(0.9);
+    background: #e64533;
+
+}
+
+
+/*底部*/
+.bottom{
+    display: none;
+}
+
+
+/*卡片1:显示方式*/
+#card1{
+    display: inline-block;
+}
+
+
+/*卡片2:显示方式*/
+#card2{
+    display: inline-block;
+}
+
+
+/*卡片3:显示方式*/
+#card3{
+    display: inline-block;
+}

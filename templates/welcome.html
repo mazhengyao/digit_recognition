@@ -1,0 +1,385 @@
+<!--
+    @Description: 手写数字识别系统欢迎界面
+    @author Damon Ma
+    @email : ma_zhengyao@163.com
+    @date 2020/4/4
+    @file : welcome.html
+    @software: PyCharm
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手写数字识别系统</title>
+    <!--导入css相关文件-->
+    <!--bootstrap-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--style整体样式-->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+    <!--layout布局样式-->
+    <link rel="stylesheet"
+          href="../static/css/layout.css">
+    <!--button按钮样式-->
+    <link rel="stylesheet"
+          href="../static/css/button.css">
+    <!--nav导航样式-->
+    <link rel="stylesheet"
+          href="../static/css/nav.css">
+    <!--menu菜单样式-->
+    <link rel="stylesheet"
+          href="../static/css/menu.css">
+    <!--界面特殊样式-->
+    <link rel="stylesheet"
+          href="../static/css/computer.css">
+
+    <!--js-->
+    <!--jquery-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/jquery.min.js') }}">
+    </script>
+    <!--main 识别事件控制-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/main.js') }}">
+    </script>
+    <!--echarts 可视化组件-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/echarts.js') }}">
+    </script>
+    <!--theme 组件样式-->
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/dark.js') }}">
+    </script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/theme/shine.js') }}">
+    </script>
+</head>
+
+<body>
+
+<!--标题模块-->
+<div id="div_title" class="col-md-12">
+          <span id="span_container">
+                <h1 id="h1_name" data-text="Digit Recognition System :)">手写数字识别系统  :)</h1>
+                    <!--字体阴影样式-->
+                    <script>
+                      // 获取元素
+                      var text = document.getElementById('h1_name');
+                      var shadow = '';
+                      // 循环给阴影赋值
+                      for(var i = 0; i< 60 ; i++) {
+                          shadow += (shadow ? ',': '') + i*1 +'px ' + i*1 +'px 0 #01ded3'
+                      }
+                      // 添加阴影
+                      text.style.textShadow = shadow;
+                    </script>
+          </span>
+</div>
+
+<!--标题栏-->
+<div id="div_black" class="col-md-12">
+    <!--标题栏背景-->
+    <canvas id="canvas_bg">
+    </canvas>
+    <!--标题栏字体-->
+    <div id="div_shadow">
+        <p id="p_menu">手写数字识别系统  :)</p>
+    </div>
+</div>
+
+<!--菜单栏-->
+<div id="div_nav" class="col-md-12">
+    <nav class="nav">
+        <a href="http://127.0.0.1:8000/welcome" class="nav-item is-active" active-color="#005eaa">欢迎</a>
+        <a href="http://127.0.0.1:8000/main" class="nav-item" active-color="#2b821d">画板</a>
+        <a href="http://127.0.0.1:8000/about" class="nav-item" active-color="#c12e34">关于</a>
+        <span class="nav-indicator"></span>
+    </nav>
+</div>
+
+
+<!--主界面-->
+<div class="row">
+    <!--欢迎文字-->
+    <div id="div_wel">
+        <h1>欢迎使用！</h1>
+        <h1>手写数字识别系统</h1>
+        <!--启动按钮-->
+        <button id="start"
+            onclick="window.location.href='http://127.0.0.1:8000/main'">
+            <p>开始</p>
+        </button>
+        <button id="about" class="dynamic">
+            <p>关于我们</p>
+            <div class="loading">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <!--使用svg绘制-->
+            <svg class="checkmark" width="30px" height="30px" stroke="white" fill="none">
+                <polyline id="polyline_checkmark" points="2,10 12,18 28,2">
+                </polyline>
+            </svg>
+        </button>
+    </div>
+
+
+    <!--使用svg绘画出电脑-->
+    <div id="div_com">
+        <svg viewBox="0 0 1152 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Devices">
+                <path id="path_com" fill="whitesmoke" d="M0 0h1152v700H0z"/>
+                <g id="mac">
+                    <path id="Vector" d="M671.763 443.297a2.917 2.917 0 0 0-.176-.637c.067.201.126.415.176.637.741 4.632-9.402 10.808-14.807 13.42l-69.647 40.997c-3.707 1.953-12.993 4.686-20.485 0-7.491-4.685-28.711-20.694-38.385-28.112l-2.583 1.484c12.876 9.852 39.33 29.791 42.139 30.728 3.512 1.171 12.876 1.757 19.314-1.171 5.15-2.343 57.551-33.775 83.108-49.198 1.294-.781 2.001-5.261 1.346-8.148z" fill="#FFCB56"/>
+                    <path id="Vector_2" d="M671.587 442.66c-1.873-4.685-35.116-19.102-51.503-25.725a643265.682 643265.682 0 0 0-91.645 52.667c9.674 7.418 30.894 23.427 38.385 28.112 7.492 4.686 16.778 1.953 20.485 0l69.646-40.997c5.658-2.734 16.505-9.371 14.632-14.057z" fill="#6F7D94"/>
+                    <path id="Vector_3" d="M764.059 334.309c5.151-2.811 5.268-7.028 4.683-8.785.03-12.91.062-27.855.093-43.926L398.267 497.714v31.041c.147 3.077 1.457 8.198 5.268 9.771 1.267.523 2.812.654 4.682.186 32.542-18.71 74.276-42.702 117.639-67.626l2.583-1.484c30.701-17.646 62.14-35.714 91.645-52.667 77.295-44.413 141.31-81.171 143.975-82.626z" fill="#B6C7E5"/>
+                    <path id="Vector_4" d="M412.314 258.756L758.792 58.453c1.839-.23 4.803.014 7.023 1.692-1.365-2.69-5.267-7.263-9.949-4.035-4.683 3.228-238.399 137.614-354.672 204.403-2.732 2.929-8.194 10.777-8.194 18.742v249.5c.195 2.609 2.575 8.216 10.535 9.771-3.811-1.573-5.121-6.694-5.268-9.771V281.598c0-11.245 9.365-19.914 14.047-22.842z" fill="#FFCB56"/>
+                    <path id="Vector_5" d="M412.314 258.756L758.792 58.453c1.839-.23 4.803.014 7.023 1.692 1.548 1.17 2.734 3.035 2.926 5.922.396 5.942.262 127.582.093 215.531L398.267 497.714V281.598c0-11.245 9.365-19.914 14.047-22.842z" fill="#4B5361"/>
+                </g>
+                <g id="stuff-on-mac">
+                    <circle id="Ellipse" cx="414" cy="275" r="3" fill="#fff"/>
+                    <circle id="Ellipse_2" cx="424" cy="269" r="3" fill="#fff"/>
+                    <circle id="Ellipse_3" cx="434" cy="263" r="3" fill="#fff"/>
+                    <path id="Rectangle" d="M668 237l-13 7.966V258l13-7.241V237z" fill="url(#paint0_linear)"/>
+                    <path class="line" id="Rectangle 2.6" d="M646 252l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.7" d="M647 259l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <path id="Rectangle_2" d="M668 258l-13 7.966V279l13-7.241V258z" fill="url(#paint1_linear)"/>
+                    <path class="line" id="Rectangle 2.8" d="M646 273l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.9" d="M647 280l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <path id="Rectangle_3" d="M668 279l-13 7.966V300l13-7.241V279z" fill="url(#paint2_linear)"/>
+                    <path class="line" id="Rectangle 2.10" d="M646 294l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.11" d="M647 301l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <path id="Rectangle_4" d="M723 210l-13 7.966V231l13-7.241V210z" fill="url(#paint3_linear)"/>
+                    <path class="line" id="Rectangle 2.12" d="M701 225l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.13" d="M702 232l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <path id="Rectangle_5" d="M723 231l-13 7.966V252l13-7.241V231z" fill="url(#paint4_linear)"/>
+                    <path class="line" id="Rectangle 2.14" d="M701 246l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.15" d="M702 253l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <path id="Rectangle_6" d="M723 252l-13 7.966V273l13-7.241V252z" fill="url(#paint5_linear)"/>
+                    <path class="line" id="Rectangle 2.16" d="M701 267l-20 12v3l20-12v-3z" fill="#fff"/>
+                    <path class="line" id="Rectangle 2.17" d="M702 274l-14 9v3l14-9v-3z" fill="#fff"/>
+                    <g id="Vector 5.1" stroke="#fff">
+                        <path d="M619 186.13V207l129-75.13V111l-129 75.13zM748 163.174v-14.609l-129 73.044v12.521l129-70.956z"/>
+                    </g>
+                    <g id="bar charts">
+                        <g id="Group" fill="#F0EFEC">
+                            <path class="bar" id="bar4" d="M453.346 432.122L448 434.413V302.291l5.346-2.291v132.122z"/>
+                            <path class="bar" id="bar3" d="M467.093 419.903l-5.346 2.291v-74.08l5.346-2.291v74.08z"/>
+                            <path class="bar" id="bar2" d="M494.586 395.464l-5.346 2.291v-90.882l5.346-2.291v90.882z"/>
+                            <path class="bar" id="bar1" d="M480.84 407.683l-5.346 2.291V302.291L480.84 300V407.683z"/>
+                        </g>
+                        <g id="Group_2">
+                            <path class="shade" id="shader4" d="M453.346 432.122L448 434.413v-48.877l5.346-2.292v48.878z" fill="url(#paint6_linear)"/>
+                            <path  class="shade" id="shader3" d="M467.093 419.902l-5.346 2.292v-24.439l5.346-2.291v24.438z" fill="url(#paint7_linear)"/>
+                            <path  class="shade" id="shader2" d="M494.586 395.464l-5.346 2.291v-48.878l5.346-2.291v48.878z" fill="url(#paint8_linear)"/>
+                            <path  class="shade" id="shader1" d="M480.84 407.683l-5.346 2.291v-63.388l5.346-2.291v63.388z" fill="url(#paint9_linear)"/>
+                        </g>
+                    </g>
+                    <g id="pie chart">
+                        <path id="piece4" d="M603.162 310.829c1.195-5.675 1.838-11.501 1.838-17.338 0-7.027-.293-13.353-.966-18.989l-44.732 28.896 43.86 7.431z" fill="url(#paint10_linear)"/>
+                        <path id="piece3" d="M597.966 327.341l-38.664-23.943 43.86 7.431a89.637 89.637 0 0 1-5.196 16.512z" fill="#B6C7E5"/>
+                        <path id="piece2" d="M568.121 239c-2.965 0-5.914.423-8.819 1.221v63.177l44.732-28.896C601.17 250.512 591.426 239 568.121 239z" fill="url(#paint11_linear)"/>
+                        <path id="piece1" d="M512 315.783c0 36.934 9.702 51.188 38.483 51.188 19.658 0 37.897-17.051 47.483-39.63l-38.664-23.943v-63.176C533.998 247.178 512 282.653 512 315.783z" fill="#fff"/>
+                    </g>
+                </g>
+                <g class="device" id="phone">
+                    <path id="Vector 2.3" d="M744.704 267.937v102c0 3.428 1.364 5.04 2.941 5.69-6.116-.138-7.645-3.851-7.645-5.69V265.592c0-6.565 3.528-10.16 5.292-11.137 14.897-8.598 45.044-25.911 46.455-26.38 1.411-.469 3.878 1.368 4.935 2.345-1.578-.79-3.656-.464-4.935 0-12.937 7.621-39.633 23.331-42.926 25.207-3.293 1.876-4.117 8.988-4.117 12.31z" fill="#FFCB56"/>
+                    <path id="Vector 2.2" d="M792.923 351.178c6.116-4.22 7.253-11.528 7.057-14.655-.196-32.241-.706-97.896-1.176-102.586-.192-1.908-1.039-2.975-2.122-3.517-1.578-.79-3.656-.464-4.935 0-12.937 7.621-39.633 23.331-42.926 25.207-3.293 1.876-4.117 8.988-4.117 12.31v102c0 3.428 1.364 5.04 2.94 5.69 1.228.506 2.585.429 3.529.172 11.368-6.448 35.635-20.4 41.75-24.621z" fill="#B7CFFD"/>
+                    <path id="Vector 2.1" d="M794.099 335.351c1.412-1.407 1.372-2.931 1.176-3.517v-92.621c0-1.407-1.176-1.368-1.764-1.172-13.917 8.011-42.103 24.269-43.514 25.207-1.412.938-1.765 3.517-1.765 4.689v90.276c0 2.814 1.961 2.736 2.941 2.345 13.72-7.816 41.515-23.8 42.926-25.207z" fill="#71809A"/>
+                </g>
+                <g class="device" id="ipad">
+                    <path id="Vector 2.1_2" d="M419.778 464.918c6.11-4.22 7.246-11.527 7.05-14.653-.195-32.237.47-153.64 0-158.329-.191-1.908-1.037-2.975-2.119-3.516-1.056-.977-3.521-2.814-4.931-2.345-1.409.469-91.432 54.044-106.316 62.64-1.762.977-5.287 4.572-5.287 11.136 0 6.565-1.175 128.046-1.175 160.087 0 1.839 1.527 5.551 7.637 5.689 1.227.506 2.582.429 3.525.172 11.359-6.447 95.507-56.661 101.616-60.881z" fill="#FFCB56"/>
+                    <path id="Vector 2.3_2" d="M419.778 464.918c6.11-4.22 7.246-11.527 7.05-14.653-.195-32.237.47-153.64 0-158.329-.191-1.908-1.037-2.975-2.119-3.516-1.576-.79-3.653-.464-4.931 0-12.924 7.619-99.501 59.592-102.791 61.467-3.29 1.876-4.112 8.988-4.112 12.309 0 31.455-1.175 151.646-1.175 157.742 0 3.427 1.362 5.039 2.937 5.689 1.227.506 2.582.429 3.525.172 11.359-6.447 95.507-56.661 101.616-60.881z" fill="#A4C3FE"/>
+                    <path id="Vector 2.2_2" d="M420.953 449.092c1.41-1.406 1.371-2.93 1.175-3.516 0-30.283 1.175-146.958 1.175-148.364 0-1.407-1.175-1.368-1.762-1.173-13.904 8.011-101.969 60.53-103.379 61.468-1.41.938-1.762 3.517-1.762 4.689 0 28.915-1.175 143.206-1.175 146.02 0 2.813 1.958 2.735 2.937 2.344 13.709-7.815 101.381-60.061 102.791-61.468z" fill="#71809A"/>
+                </g>
+                <g id="mouse">
+                    <path id="Vector 3" d="M870.703 490.066c2.349-3.258.979-6.787 0-8.144C857.192 459.235 821.36 454 811.373 454c-9.104 0-31.879 15.955-25.148 17.451 4.789 5.119 38.341 21.135 54.519 28.504 5.287 6.98 27.022-5.817 29.959-9.889z" fill="#B7CFFD"/>
+                    <path id="Vector 3.1" d="M789.052 471.451c14.098-1.745 46.406 21.523 51.692 28.504-16.178-7.369-49.73-23.385-54.518-28.504.652.145 1.581.154 2.826 0z" fill="#4B5361"/>
+                </g>
+                <g class="device2" id="stuff-on-iphone">
+                    <path id="Rectangle_7" d="M786 291l-7 5.31V305l7-4.828V291z" fill="url(#paint12_linear)"/>
+                    <path id="Rectangle 2" d="M771.5 299.517v-.634l-11 6.6v.634l11-6.6z" stroke="#fff"/>
+                    <path class="line2" id="Rectangle 2.1" d="M771.5 307.468v-.582l-11 6.646v.582l11-6.646z" stroke="#fff"/>
+                    <path class="line2" id="Rectangle 2.6_2" d="M771.5 315.517v-.634l-11 6.6v.634l11-6.6z" stroke="#fff"/>
+                    <path class="line2" id="Rectangle 2.7_2" d="M771.5 319.468v-.582l-11 6.646v.582l11-6.646z" stroke="#fff"/>
+                    <path class="line2" id="Rectangle 2.8_2" d="M771.5 327.517v-.634l-11 6.6v.634l11-6.6z" stroke="#fff"/>
+                    <path class="line2" id="Rectangle 2.9_2" d="M771.5 331.468v-.582l-11 6.646v.582l11-6.646z" stroke="#fff"/>
+                    <path id="Rectangle_8" d="M786 305l-7 4.931V318l7-4.483V305z" fill="url(#paint13_linear)"/>
+                    <path id="Rectangle_9" d="M786 318l-7 5.31V332l7-4.828V318z" fill="url(#paint14_linear)"/>
+                    <g id="Vector 5" stroke="#fff" stroke-width=".5">
+                        <path d="M753 278.435v12.464l38-22.435V256l-38 22.435zM791 277.812v-4.363l-38 21.812V299l38-21.188z"/>
+                    </g>
+                </g>
+                <g class="device2" id="stuff-on-ipad">
+                    <g id="Group_3">
+                        <path id="Vector 4.2" d="M365.281 359.525l-.72.407-34.19 21.284a3 3 0 0 0-1.415 2.547v42.211m36.325-66.449a.482.482 0 0 1 .719.419v42.114a2.999 2.999 0 0 1-1.401 2.538l-34.73 21.882a.596.596 0 0 1-.913-.504m36.325-66.449c-.659-.619-1.505-1.01-2.244-1.242-.838-.263-1.757.021-2.48.52-3.741 2.584-16.403 11.014-32.68 20.416-.959.72-2.877 2.518-2.877 3.957v38.668c0 .795.312 1.574.922 2.085.788.658 1.89 1.473 3.034 2.045" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle_10" d="M359.526 370.588l-24.096 14.745v9.376l24.096-14.225v-9.896z" fill="url(#paint15_linear)"/>
+                        <path id="Rectangle_11" d="M359.126 398.962v-8.918l-7.112 4.827v8.45l7.112-4.359z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle_12" d="M344.74 407.594v-8.918l-7.112 4.827v8.449l7.112-4.358z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle 2.6_3" d="M359.276 384.832v-1.575l-22.877 13.727v1.574l22.877-13.726z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.7_3" d="M359.276 402.817v-1.57l-7.052 4.366v1.57l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.8_3" d="M344.89 411.448v-1.569l-7.052 4.366v1.569l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                    </g>
+                    <g id="Group_4">
+                        <path id="Vector 4.2_2" d="M416.281 331.525l-.72.407-34.19 21.284a3 3 0 0 0-1.415 2.547v42.211m36.325-66.449a.482.482 0 0 1 .719.419v42.114a2.999 2.999 0 0 1-1.401 2.538l-34.73 21.882a.596.596 0 0 1-.913-.504m36.325-66.449c-.659-.619-1.505-1.01-2.244-1.242-.838-.263-1.757.021-2.48.52-3.741 2.584-16.403 11.014-32.68 20.416-.959.72-2.877 2.518-2.877 3.957v38.668c0 .795.312 1.574.922 2.085.788.658 1.89 1.473 3.034 2.045" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle_13" d="M410.526 342.588l-24.096 14.745v9.376l24.096-14.225v-9.896z" fill="url(#paint16_linear)"/>
+                        <path id="Rectangle_14" d="M410.126 370.962v-8.918l-7.112 4.827v8.45l7.112-4.359z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle_15" d="M395.74 379.594v-8.918l-7.112 4.827v8.449l7.112-4.358z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle 2.6_4" d="M410.276 356.832v-1.575l-22.877 13.727v1.574l22.877-13.726z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.7_4" d="M410.276 374.817v-1.57l-7.052 4.366v1.57l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.8_4" d="M395.89 383.448v-1.569l-7.052 4.366v1.569l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                    </g>
+                    <g id="Group_5">
+                        <path id="Vector 4.2_3" d="M365.281 420.525l-.72.407-34.19 21.284a3 3 0 0 0-1.415 2.547v42.211m36.325-66.449a.482.482 0 0 1 .719.419v42.114a2.999 2.999 0 0 1-1.401 2.538l-34.73 21.882a.596.596 0 0 1-.913-.504m36.325-66.449c-.659-.619-1.505-1.01-2.244-1.242-.838-.263-1.757.021-2.48.52-3.741 2.584-16.403 11.014-32.68 20.416-.959.72-2.877 2.518-2.877 3.957v38.668c0 .795.312 1.574.922 2.085.788.658 1.89 1.473 3.034 2.045" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle_16" d="M359.526 431.588l-24.096 14.745v9.376l24.096-14.225v-9.896z" fill="url(#paint17_linear)"/>
+                        <path id="Rectangle_17" d="M359.126 459.962v-8.918l-7.112 4.827v8.45l7.112-4.359z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle_18" d="M344.74 468.594v-8.918l-7.112 4.827v8.449l7.112-4.358z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle 2.6_5" d="M359.276 445.832v-1.575l-22.877 13.727v1.574l22.877-13.726z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.7_5" d="M359.276 463.817v-1.57l-7.052 4.366v1.57l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.8_5" d="M344.89 472.448v-1.569l-7.052 4.366v1.569l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                    </g>
+                    <g id="Group_6">
+                        <path id="Vector 4.2_4" d="M416.281 390.525l-.72.407-34.19 21.284a3 3 0 0 0-1.415 2.547v42.211m36.325-66.449a.482.482 0 0 1 .719.419v42.114a2.999 2.999 0 0 1-1.401 2.538l-34.73 21.882a.596.596 0 0 1-.913-.504m36.325-66.449c-.659-.619-1.505-1.01-2.244-1.242-.838-.263-1.757.021-2.48.52-3.741 2.584-16.403 11.014-32.68 20.416-.959.72-2.877 2.518-2.877 3.957v38.668c0 .795.312 1.574.922 2.085.788.658 1.89 1.473 3.034 2.045" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle_19" d="M410.526 401.588l-24.096 14.745v9.376l24.096-14.225v-9.896z" fill="url(#paint18_linear)"/>
+                        <path id="Rectangle_20" d="M410.126 429.962v-8.918l-7.112 4.827v8.45l7.112-4.359z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle_21" d="M395.74 438.594v-8.918l-7.112 4.827v8.449l7.112-4.358z" stroke="#fff" stroke-width=".8"/>
+                        <path id="Rectangle 2.6_6" d="M410.276 415.832v-1.575l-22.877 13.727v1.574l22.877-13.726z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.7_6" d="M410.276 433.817v-1.57l-7.052 4.366v1.57l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                        <path id="Rectangle 2.8_6" d="M395.89 442.448v-1.569l-7.052 4.366v1.569l7.052-4.366z" stroke="#fff" stroke-width=".5"/>
+                    </g>
+                    <ellipse id="Ellipse_4" cx="324.5" cy="364" rx="1.5" ry="2" fill="#fff"/>
+                    <ellipse id="Ellipse_5" cx="329.5" cy="361" rx="1.5" ry="2" fill="#fff"/>
+                    <ellipse id="Ellipse_6" cx="334.5" cy="358" rx="1.5" ry="2" fill="#fff"/>
+                </g>
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear" x1="661.5" y1="237" x2="661.5" y2="258" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#FFF9ED"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear" x1="661.5" y1="258" x2="661.5" y2="279" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFD16A"/>
+                    <stop offset="1" stop-color="#FFFDF9"/>
+                </linearGradient>
+                <linearGradient id="paint2_linear" x1="661.5" y1="279" x2="661.5" y2="300" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint3_linear" x1="716.5" y1="210" x2="716.5" y2="231" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint4_linear" x1="716.5" y1="231" x2="716.5" y2="252" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint5_linear" x1="716.5" y1="252" x2="716.5" y2="273" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint6_linear" x1="450.673" y1="383.244" x2="450.673" y2="434.413" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B7CFFD" stop-opacity="0"/>
+                    <stop offset=".635" stop-color="#B7CFFD"/>
+                    <stop offset="1" stop-color="#B7CFFD"/>
+                </linearGradient>
+                <linearGradient id="paint7_linear" x1="464.42" y1="395.464" x2="464.42" y2="422.194" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B7CFFD" stop-opacity="0"/>
+                    <stop offset=".635" stop-color="#B7CFFD"/>
+                    <stop offset="1" stop-color="#B7CFFD"/>
+                </linearGradient>
+                <linearGradient id="paint8_linear" x1="491.913" y1="346.586" x2="491.913" y2="397.755" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B7CFFD" stop-opacity="0"/>
+                    <stop offset=".635" stop-color="#B7CFFD"/>
+                    <stop offset="1" stop-color="#B7CFFD"/>
+                </linearGradient>
+                <linearGradient id="paint9_linear" x1="478.167" y1="344.295" x2="478.167" y2="409.974" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B7CFFD" stop-opacity="0"/>
+                    <stop offset=".635" stop-color="#B7CFFD"/>
+                    <stop offset="1" stop-color="#B7CFFD"/>
+                </linearGradient>
+                <linearGradient id="paint10_linear" x1="601.775" y1="292.737" x2="549.99" y2="305.299" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6B81AC"/>
+                    <stop offset="1" stop-color="#6B81AC" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint11_linear" x1="581.668" y1="239" x2="548.469" y2="324.765" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B7CFFD"/>
+                    <stop offset="1" stop-color="#B7CFFD" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint12_linear" x1="782.5" y1="291" x2="782.5" y2="305" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint13_linear" x1="782.5" y1="305" x2="782.5" y2="318" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint14_linear" x1="782.5" y1="318" x2="782.5" y2="332" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint15_linear" x1="347.478" y1="370.588" x2="347.478" y2="394.709" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint16_linear" x1="398.478" y1="342.588" x2="398.478" y2="366.709" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint17_linear" x1="347.478" y1="431.588" x2="347.478" y2="455.709" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <linearGradient id="paint18_linear" x1="398.478" y1="401.588" x2="398.478" y2="425.709" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFCB56"/>
+                    <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+
+</div>
+</body>
+
+
+<!--chart可视化组件实现-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/chart.js') }}">
+</script>
+<!--shadow字体阴影-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/shadow.js') }}">
+</script>
+<!--star动态连线背景-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/star.js') }}">
+</script>
+<!--button响应式按钮-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/button.js') }}">
+</script>
+<!--nav导航栏-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/nav.js') }}">
+</script>
+<!--svg实现-->
+<!--TweenMax是一款js缓动插件,可以实现很多种炫酷的效果-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/TweenMax.min.js') }}">
+</script>
+<!--GSDevTools工具集合-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/GSDevTools.min.js') }}">
+</script>
+<!--svg动画js文件-->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/computer.js') }}"></script>
+
+<!--cdn加载过慢-->
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>-->
+<!--<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/GSDevTools.min.js'></script>-->
+
+</html>
